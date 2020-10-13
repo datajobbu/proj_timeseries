@@ -1,0 +1,20 @@
+# makefile 결과들 생략
+*.a
+*.so
+*.csv
+
+# .a file들을 생략해도 lib.a는 생략하지 말것
+!lib.a
+
+# 현재 디렉토리 밑에 있는 TODO 디렉토리. 다른 디렉토리 밑의 TODO 디렉토리는 살린다
+/TODO
+
+# build 디렉토리 내 모든 파일 생략
+build/
+
+# doc 디렉토리내 txt 확장자 파일만 생략
+doc/*.txt
+doc/*.csv
+
+# doc 디렉토리 내 모든 pdf 파일 생략
+doc/**/*.pdf
