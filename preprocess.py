@@ -8,18 +8,18 @@ def standard(std_df):
 
 
 if __name__ == "__main__":
-    std_df = pd.read_csv("C:/Users/USER/programming/data/SR_allocations.csv")
-    file1 = pd.read_csv("C:/Users/USER/programming/data/File1.txt",
+    std_df = pd.read_csv("/daintlab/data/CER_electricity/SR_allocations.csv")
+    file1 = pd.read_csv("/daintlab/data/CER_electricity/File1.txt",
                         sep=' ', names=['ID', 'DT', 'Usage'])
-    file2 = pd.read_csv("C:/Users/USER/programming/data/File2.txt",
+    file2 = pd.read_csv("/daintlab/data/CER_electricity/File2.txt",
                         sep=' ', names=['ID', 'DT', 'Usage'])
-    file3 = pd.read_csv("C:/Users/USER/programming/data/File3.txt",
+    file3 = pd.read_csv("/daintlab/data/CER_electricity/File3.txt",
                         sep=' ', names=['ID', 'DT', 'Usage'])
-    file4 = pd.read_csv("C:/Users/USER/programming/data/File4.txt",
+    file4 = pd.read_csv("/daintlab/data/CER_electricity/File4.txt",
                         sep=' ', names=['ID', 'DT', 'Usage'])
-    file5 = pd.read_csv("C:/Users/USER/programming/data/File5.txt",
+    file5 = pd.read_csv("/daintlab/data/CER_electricity/File5.txt",
                         sep=' ', names=['ID', 'DT', 'Usage'])
-    file6 = pd.read_csv("C:/Users/USER/programming/data/File6.txt",
+    file6 = pd.read_csv("/daintlab/data/CER_electricity/File6.txt",
                         sep=' ', names=['ID', 'DT', 'Usage'])
     file_df = pd.concat([file1, file2, file3, file4, file5, file6])
     id_list = standard(std_df)
@@ -30,5 +30,14 @@ if __name__ == "__main__":
                              columns='DT',
                              values='Usage'
                             )
-    print(pv_list.head())
-    pv_list.to_csv("tsdata.csv")
+    
+    #print(pv_list.shape)
+    #print(pv_list.head())
+    #print(pv_list.isnull().sum().sum())
+    pv_list = pv_list.T
+    #print(pv_list.shape)
+    pv_list = pv_list.interpolate('linear')    
+    #print(pv_list.isnull().sum().sum())
+    pv_list = pv_list.T
+    #print(pv_list.shape)
+    #pv_list.to_csv("/daintlab/data/CER_electricity/tsdata.csv")
