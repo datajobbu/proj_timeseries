@@ -1,1 +1,6 @@
-# proj_time_series
+# Time-Series Project(LoadCNN)
+
+## Preprocess
+ISSUES:
+ * 서머타임
+ * 행: User ID, 열: Timestep
