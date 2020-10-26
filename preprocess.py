@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def standard(std_df):
     std = std_df[std_df['taiff'] == "E"]
@@ -31,16 +32,26 @@ if __name__ == "__main__":
                              values='Usage'
                             )
     
+    pv_list.insert(12339, 45202, None)
+    pv_list.insert(12340, 45203, None)
+
+    pv_list = pv_list.drop([29849, 29850, 66949, 66950], axis=1)
+    pv_list = pv_list.T
+
+    
+
+    print(pv_list.shape)
+    pv_list.to_csv("/daintlab/data/CER_electricity/new_data.csv")
     #print(pv_list.shape)
     #print(pv_list.head())
     #print(pv_list.isnull().sum().sum())
-    pv_list = pv_list.T
+    #pv_list = pv_list.T
     #print(pv_list.shape)
-    pv_list = pv_list.interpolate('linear')    
+    #pv_list = pv_list.interpolate('linear')    
     #print(pv_list.isnull().sum().sum())
-    pv_list = pv_list.T
+    #pv_list = pv_list.T
     #print(pv_list.shape)
-    #pv_list.to_csv("/daintlab/data/CER_electricity/tsdata.csv")
+    
     '''
     id_list = standard(std_df)
     ex_list = pd.merge(id_list, file_df, on='ID', how='inner')
