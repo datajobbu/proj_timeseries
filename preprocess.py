@@ -41,3 +41,30 @@ if __name__ == "__main__":
     pv_list = pv_list.T
     #print(pv_list.shape)
     #pv_list.to_csv("/daintlab/data/CER_electricity/tsdata.csv")
+    '''
+    id_list = standard(std_df)
+    ex_list = pd.merge(id_list, file_df, on='ID', how='inner')
+
+    ex_list['NEW_DT'] = pd.to_datetime(ex_list['DT'])
+    print(ex_list.head())
+
+    print(ex_list.shape)
+
+    pv_list = pd.pivot_table(ex_list,
+                             index='ID',
+                             columns='DT',
+                             values='Usage'
+                            )
+    
+    #print(pv_list.shape)
+    print(pv_list.head())
+
+    #print(pv_list.isnull().sum().sum())
+    pv_list = pv_list.T
+    #print(pv_list.shape)
+    pv_list = pv_list.interpolate('linear')    
+    #print(pv_list.isnull().sum().sum())
+    pv_list = pv_list.T
+    #print(pv_list.shape)
+    #pv_list.to_csv("/daintlab/data/CER_electricity/tsdata.csv")
+'''
