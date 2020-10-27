@@ -1,10 +1,19 @@
 # Time-Series Project(LoadCNN)
 
 ## Preprocess
-ISSUES:
+ 1. 행: User ID, 열: Timestep로 피벗
+ 2. 임의로 45202, 45203에 NaN 추가하고, 29849, 29850, 66949, 66950 삭제함
+ 3. 최종 Shape: (929, 25728) - /daintlab/data/CER_Electricity/new_data.csv
+
+
+## MODEL
+CNN - LoadCNN
+
+
+## ISSUES
  * 7월 1일 ~ 후년 12월 31일: 549일
  * 서머타임
- * 행: User ID, 열: Timestep
+
 
 ### Days
 2009년 7월 1일 ~ 2010년 12월 31일: 549일
@@ -12,6 +21,7 @@ ISSUES:
 근데 논문에서는 같은 기간을 536일이라고 설정하고 함.
 
 13일은 어디 간거지?
+
 
 ### Summertime
 
@@ -39,5 +49,4 @@ day 452의 경우에는 timestep이 46개인데 02, 03이 없음.
 
 **일단 임의로 45202, 45203에 NaN 추가하고, 29849, 29850, 66949, 66950 삭제함**
 
-## MODEL
-CNN - LoadCNN
+
