@@ -37,6 +37,23 @@ def interpolate(df):
     return df
 
 
+def rename(ts_data):
+    series_ts = pd.date_range('2009-07-14 00:00', '2010-12-31 23:30', periods=25728)
+    list_ts = []
+
+    for ts in series_ts:
+        list_ts.append(ts)
+
+    ts_data = ts_data.T
+    ts_data['date_time'] = list_ts
+    ts_data.set_index('date_time', inplace=True)
+
+    ts_data = ts_data.T
+    #ts_data = ts_data.drop('ID', axis=1)
+
+    return ts_data
+
+
 def main():
     id_list = standard()
     file_df = concat_file()
@@ -48,12 +65,10 @@ def main():
                              values='Usage'
                             )    
 
-    pv_list.insert(12339, 45202, None)
-    pv_list.insert(12340, 45203, None)
-    pv_list = pv_list.drop([29849, 29850, 66949, 66950], axis=1)
+    pv_list = pv_list.drop([73047, 73048], axis=1)
     
-    print(pv_list.shape)
-    
+    pv_list = rename(pv_list)
+
     pv_list.to_csv("/daintlab/data/CER_electricity/new_data.csv")
 
 
